@@ -1,0 +1,46 @@
+#https://www.geeksforgeeks.org/batch/gfg-160-problems/track/arrays-gfg-160/problem/majority-vote
+
+class Solution:
+    # Function to find the majority elements in the array
+    def findMajority(self, arr):
+        #Your Code goes here.
+        n = len(arr)
+        threshold = n // 3
+        freq_map = {}
+        
+        for num in arr:
+            if num in freq_map:
+                freq_map[num] += 1
+            else:
+                freq_map[num] = 1
+            
+        result = []
+        for num, counts in freq_map.items():
+            if counts > threshold:
+                result.append(num)
+        
+        return sorted(result)
+
+
+#{ 
+ # Driver Code Starts
+#Initial Template for Python 3
+
+
+def main():
+    t = int(input().strip())
+    for _ in range(t):
+        s = input().strip()
+        nums = list(map(int, s.split()))
+        ob = Solution()
+        ans = ob.findMajority(nums)
+        if not ans:
+            print("[]")
+        else:
+            print(" ".join(map(str, ans)))
+
+
+if __name__ == "__main__":
+    main()
+
+# } Driver Code Ends
