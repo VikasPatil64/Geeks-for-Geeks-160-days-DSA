@@ -1,0 +1,33 @@
+#https://www.geeksforgeeks.org/batch/gfg-160-problems/track/arrays-gfg-160/problem/stock-buy-and-sell2615
+
+from typing import List
+
+
+class Solution:
+    def maximumProfit(self, prices) -> int:
+        n = len(prices)
+        if n < 2:
+            return 0
+        
+        max_profit = 0
+        for i in range (1, n):
+            if prices[i] > prices[i -1]:
+                max_profit += prices[i] - prices[i -1]
+        
+        return max_profit
+         
+
+
+#{ 
+ # Driver Code Starts
+#Initial Template for Python 3
+if __name__ == "__main__":
+    t = int(input())
+    for _ in range(t):
+        arr = list(map(int, input().strip().split()))
+        solution = Solution()
+        res = solution.maximumProfit(arr)
+        print(res)
+        print("~")
+
+# } Driver Code Ends
