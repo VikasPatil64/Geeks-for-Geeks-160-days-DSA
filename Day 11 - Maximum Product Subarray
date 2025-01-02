@@ -1,0 +1,46 @@
+#https://www.geeksforgeeks.org/batch/gfg-160-problems/track/arrays-gfg-160/problem/maximum-product-subarray3604
+
+#User function Template for python3
+class Solution:
+    
+
+	# Function to find maximum
+	# product subarray
+	def maxProduct(self,arr):
+	    n = len(arr)
+	    if n == 0:
+	        return 0
+		maxProduct = float("-inf")
+		prefix = 1
+		suffix = 1
+		 
+		for i in range (n):
+		    prefix*=arr[i]
+		    if prefix > maxProduct:
+		        maxProduct = prefix
+		    if prefix == 0:
+		        prefix = 1
+		        
+		
+		    suffix*=arr[n - i - 1]
+		    if suffix > maxProduct:
+		        maxProduct = suffix
+		    if suffix == 0:
+		        suffix = 1
+		         
+		         
+		return maxProduct
+#{ 
+ # Driver Code Starts
+#Initial Template for Python 3
+
+if __name__ == '__main__':
+    tc = int(input())
+    while tc > 0:
+        arr = list(map(int, input().strip().split()))
+        ob = Solution()
+        ans = ob.maxProduct(arr)
+        print(ans)
+        tc -= 1
+
+# } Driver Code Ends
